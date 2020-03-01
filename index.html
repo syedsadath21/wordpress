@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+  <link rel="icon" href="./images/s2.png" type="image/gif" sizes="16x16">
+  <link rel="stylesheet" href="./style.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <title>WordPress Search </title>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="container">
+      <div class="row">
+        <div class="col header col-left">
+          <h2 class="card-title"> <img src="./images/wp.png">WordPress Builder Search</h2>
+          <div class="form-group" >
+            <!-- <form class="needs-validation" novalidate>
+              <div class="input-group"> 
+                <input type="text" id="input" class="form-control" placeholder="Enter The SubID" aria-describedby="inputGroupPrepend"  required>
+                <div class="invalid-feedback">
+                    Please choose a username.
+                  </div>
+                  <div class="valid-feedback">
+                      Looks good!
+                    </div>
+              </div>
+              <button id="Submit" class="btn btn-primary getUrls" type="submit">Submit form</button>
+            </form> -->
+
+            <form id="myform" class="needs-validation" novalidate action="javascript:getUrls();" >
+                    <div class="input-group">          
+                      <input type="text" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"  class="form-control" placeholder="Enter The SubID" id="input" aria-describedby="inputGroupPrepend" maxlength="7" required>
+                      <div class="invalid-feedback">    Please enter SubID.  </div>
+                      <!-- <div class="valid-feedback">
+                          Looks good!
+                        </div> -->
+                    </div>
+                <button  class="btn btn-primary submit" type="submit" >Submit</button>
+              </form>
+      </div>
+
+      <div class="search-results">
+          <div id="loading-point"></div>
+          <div id="error-msg" ></div>
+          <div id="data" ></div> 
+          <div id="result" ></div>          
+          <div id="linkList"> <ul> </ul>  </div>
+      </div>
+
+            <input type="button" value="test" class="test"/>
+          </div>
+            <div id="numberList"></div>
+            <input type="button" value="Getlink" class="Getlink" />
+        </div>
+      
+    <div class="row">
+      <!-- <div class="col">
+        <div id="loading-point"></div>
+        <div id="error-msg" ></div>
+        <div id="data" ></div> 
+        <div id="result" ></div>          
+        <div id="linkList"> <ul> </ul>  </div>
+      </div> -->
+    </div>
+  </div>
+</div>
+
+  
+ <script>
+   var allLinks;
+   var altText;   
+   const cros = "https://cors-anywhere.herokuapp.com/";
+
+     //  $('.getUrls').click(function(event){
+    function getUrls(){
+      $('.submit').attr('disabled','true');
+      $('#input').attr('disabled','true');
+      $('#loading-point').html('<img class="loading" src="./images/source.gif" />');
+          const url = "https://"+ document.getElementById("input").value; 
+
+          const urls = [
+              cros + url +'.findlaw1.flsitebuilder.com/',
+              cros + url +'.findlaw2.flsitebuilder.com/',
+              cros + url +'.findlaw3.flsitebuilder.com/',
+              cros + url +'.findlaw4.flsitebuilder.com/',
+              cros + url +'.findlaw5.flsitebuilder.com/'
+          ];
+
+          Promise.all(urls.map(url =>
+            fetch(url)
+              .then(checkStatus)                 
+              .then(parseJSON)
+              // .catch(error => console.log('Server Down Please Try After Some Time'))
+              .catch(erorStatus)
+          ))
+          
+          function erorStatus(response){
+            if(response.ok !== false){
+              $('#loading-point').empty();
+              $('<h4 class="alert alert-danger hideEror">'+ "Server Down Please Try After Some Time" + '</h4>').appendTo('#error-msg');
+            }   
+            var erMsg = document.getElementsByClassName('alert-danger') 
+            if(erMsg.length > 1){          
+              $('<h4 class="alert alert-danger">'+ erMsg[4].innerText + '</h4>').appendTo('#error-msg');
+            }
+          }
+          function checkStatus(response) {
+              if (response.ok) {
+                return Promise.resolve(response.text());
+              } else {
+                return Promise.reject(new Error(response.statusText));
+              }
+            }
+
+          function parseJSON(response) {
+            return $('<li>'+ $(response).find('.logo_container').html() + '</li>').appendTo('#linkList ul');
+          }
+
+            setTimeout(function(){ 
+              $('.Getlink').trigger("click");
+              }, 5000);
+              // setTimeout(function(){ 
+              //   $('#linkList').empty();
+              // }, 8000);
+
+              $('.Getlink').click(function(){
+                allLinks =  document.getElementById('linkList').querySelectorAll('a');
+                altText = document.getElementById('linkList').querySelectorAll('img');
+
+                  for(let j=0; j < altText.length; j++){
+                    if(altText[j].getAttribute('alt').substr(0,6) !== "DO NOT"){
+                      let altName = altText[j].getAttribute('alt');
+                      $('<h1 class="firmName">' + altName + '</h1>').appendTo('#data');
+                    }                  
+                  }       
+
+                for(let i=0; i < allLinks.length; i++){
+                  if(allLinks[i].getAttribute('href').substr(8,7) !== "findlaw"){
+                    // console.log(allLinks[i].getAttribute('href'));
+                    let builderLink = allLinks[i].getAttribute('href');
+                    $('#loading-point').empty();
+                    $('<h4><span>Builder URL </span>: <a target="_blank" class="builderLink">'+ builderLink + '</a></h4>').appendTo('#data');
+                    $('.builderLink').attr('href',builderLink);
+                    //sub id link
+                    $('<h4><span>SubID </span>: <a target="_blank" class="subLink">'+ document.getElementById("input").value + '</a></h4>').appendTo('#data');
+                    $('.subLink').attr('href','http://coportal.int.thomsonreuters.com/index.jsp?page=sub_details&subscription_id='+ document.getElementById("input").value);
+                   //dashboard link
+                    $('<a target="_blank" class="link-btn dashLink">Dashboard</a>').appendTo('#data');
+                    $('.dashLink').attr('href',builderLink+'wp-admin/');
+                     //coportal link
+                     $('<a target="_blank" class="link-btn coPortalLink">CoPortal</a>').appendTo('#data');
+                    $('.coPortalLink').attr('href','http://coportal.int.thomsonreuters.com/index.jsp?page=sub_details&subscription_id='+ document.getElementById("input").value);
+                  }                  
+                }
+                if ( allLinks[0].getAttribute('href').substr(8,7) === "findlaw" 
+                  && allLinks[1].getAttribute('href').substr(8,7) === "findlaw" 
+                  && allLinks[2].getAttribute('href').substr(8,7) === "findlaw" 
+                  && allLinks[3].getAttribute('href').substr(8,7) === "findlaw" 
+                  && allLinks[4].getAttribute('href').substr(8,7) === "findlaw") {
+                    $('#loading-point').empty();
+                    $('<h4 class="alert alert-danger">'+ "No WordPress Site Found For This SubId" + '</h4>').appendTo('#error-msg');
+                }                             
+            });
+
+            $('.test').click(function(){
+              const resultUrl = document.getElementsByClassName('builderLink')[0].innerText;    
+              fetch(cros + resultUrl) 
+              .then(response => response.text())
+              .then(contents => document.getElementById("result").innerHTML = $(contents).find('.flfooterbrand').html() )
+              .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
+              setTimeout(function(){
+                  let details= document.getElementById('result').querySelectorAll('a')[0]
+                  $('<h4 class="alert alert-success">'+'Firm Name: '+ details.innerText + '</h4>').appendTo('#data');
+                  $('<h4 class="alert alert-success">'+ 'WLD: '+ details.getAttribute('href') + '</h4>').appendTo('#data');
+                }, 2000);
+            });
+     }
+
+  </script>
+
+
+  <script>
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function() {
+      'use strict';
+      window.addEventListener('load', function() {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function(form) {
+          form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+    </script>
+    
+
+</body>
+</html>

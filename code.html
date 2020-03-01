@@ -1,0 +1,54 @@
+//  
+    //   setTimeout(function () {
+    //       const proxyurl = "https://cors-anywhere.herokuapp.com/";
+    //       const url = "https://"+ document.getElementById("input").value +".findlaw"+f+".flsitebuilder.com/"; 
+    //       fetch(proxyurl + url) 
+    //       .then(response => response.text())
+    //       .then(contents => document.getElementById("data").innerHTML = $(contents).find('.logo_container').html() )
+    //       .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
+    //       setTimeout(function(){ 
+    //       $('.Getlink').trigger("click");
+    //         $('#data').empty();
+    //       }, 2000);
+    //     }, 4000*f);
+    //   })(f);
+    //     }
+
+          // fetch('https://cors-anywhere.herokuapp.com/https://3215923.findlaw1.flsitebuilder.com/') 
+          // .then(response => response.text())
+          // .then(contents => console.log($(contents).find('.logo_container').html() ))
+          // .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
+          // setTimeout(function(){ 
+          // $('.Getlink').trigger("click");
+          //   $('#data').empty();
+          // }, 1000);
+
+          // fetch('https://cors-anywhere.herokuapp.com/https://3215923.findlaw2.flsitebuilder.com/') 
+          // .then(response => response.text())
+          // .then(contents => console.log($(contents).find('.logo_container').html() ))
+          // .catch(() => console.log("Can’t access " + url + " response. Blocked by browser?"))
+          // setTimeout(function(){ 
+          // $('.Getlink').trigger("click");
+          //   $('#data').empty();
+          // }, 2000);
+
+           $('.Getlink').click(function(){
+            //   var links = document.getElementsByTagName('link');
+            //       for(let i=0; i < links.length; i++){
+            //         if (links[i].rel == "pingback"){
+            //           var h4 = document.createElement("h4");  
+            //            h4.innerHTML =  'Link: ' + links[i].href; 
+            //            document.getElementById("linkList").appendChild(h4);
+            //         }
+            //       }
+            // });
+          
+            // $('.Getlink').click(function(){
+            //           var h4 = document.createElement("h4");  
+            //            h4.innerHTML =  'Link: ' + document.getElementById('data').querySelectorAll('a')[0].getAttribute('href'); 
+            //            document.getElementById("linkList").appendChild(h4);
+            // });
+
+            if ( allLinks[0].getAttribute('href').substr(8,7) === "findlaw" && allLinks[1].getAttribute('href').substr(8,7) === "findlaw" && allLinks[2].getAttribute('href').substr(8,7) === "findlaw" &&   allLinks[3].getAttribute('href').substr(8,7) === "findlaw" && allLinks[4].getAttribute('href').substr(8,7) === "findlaw") {
+                $('<h4>'+ "Not found" + '</h4>').appendTo('#data');
+              }  
