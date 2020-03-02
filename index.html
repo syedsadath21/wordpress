@@ -149,9 +149,9 @@
                   //if(allLinks[i].getAttribute('href').length === 54){
                     //console.log(allLinks[i].getAttribute('href').substr(0,43));
                      let builderLink = document.getElementsByTagName('atom:link')[0].getAttribute('href').substr(0,43);
-                     let firmName = document.getElementsByTagName('title')[1].innerText;
+                     //let firmName = document.getElementsByTagName('title')[1].innerText;
                      $('#loading-point').empty();
-                     $('<h1 class="firmName">' + firmName + '</h1>').appendTo('#data');
+                     //$('<h1 class="firmName">' + firmName + '</h1>').appendTo('#data');
                      $('<h4><span>Builder URL </span>: <a target="_blank" class="builderLink">'+ builderLink + '</a></h4>').appendTo('#data');
                      $('.builderLink').attr('href',builderLink);
                      $('<h4><span>SubID </span>: '+ builderLink.substr(8,7) + '</h4>').appendTo('#data');
