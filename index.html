@@ -34,10 +34,10 @@
               <button id="Submit" class="btn btn-primary getUrls" type="submit">Submit form</button>
             </form> -->
 
-            <form id="myform" class="needs-validation" novalidate action="javascript:getUrls();" >
+            <form id="myform" class="needs-validation" novalidate action="javascript:fetchData();" >
                 <div class="input-group">          
                   <input type="text" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"  class="form-control" placeholder="Enter The SubID" id="input" aria-describedby="inputGroupPrepend" maxlength="7" required>
-                  <div class="invalid-feedback">    Please enter a valid SubID.  </div>
+                  <div class="invalid-feedback">  Please enter a valid SubID.  </div>
                   <!-- <div class="valid-feedback">
                       Looks good!
                     </div> -->
