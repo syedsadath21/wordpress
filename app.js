@@ -18,11 +18,11 @@
           const url = "https://"+ document.getElementById("input").value; 
 
           const urls = [
-              cros + url +'.findlaw1.flsitebuilder.com/wp-json/',
-              cros + url +'.findlaw2.flsitebuilder.com/wp-json/',
-              cros + url +'.findlaw3.flsitebuilder.com/wp-json/',
-              cros + url +'.findlaw4.flsitebuilder.com/wp-json/',
-              cros + url +'.findlaw5.flsitebuilder.com/wp-json/'
+              url +'.findlaw1.flsitebuilder.com/wp-json/',
+              url +'.findlaw2.flsitebuilder.com/wp-json/',
+              url +'.findlaw3.flsitebuilder.com/wp-json/',
+              url +'.findlaw4.flsitebuilder.com/wp-json/',
+              url +'.findlaw5.flsitebuilder.com/wp-json/'
           ];
 
           Promise.all(urls.map(url =>
