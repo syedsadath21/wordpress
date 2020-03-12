@@ -12,14 +12,16 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <title>WordPress Search </title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+
+  <title>FLSite Builder Search </title>
 </head>
 <body>
   <div class="container-fluid">
     <div class="container">
       <div class="row">
         <div class="col header col-left">
-          <h2 class="card-title"> <img src="./images/wp.png">WordPress Builder Search</h2>
+          <h2 class="card-title"> <img src="./images/wp.png">FLSite Builder Search</h2>
           <div class="form-group" >
             <!-- <form class="needs-validation" novalidate>
               <div class="input-group"> 
@@ -34,7 +36,24 @@
               <button id="Submit" class="btn btn-primary getUrls" type="submit">Submit form</button>
             </form> -->
 
-            <form id="myform" class="needs-validation" novalidate action="javascript:fetchData();" >
+            <div id="myRadioGroup">    
+              <span>Search using: </span>
+                <input id="radio1" type="radio" name="options" checked/> <label for="radio1"> Sub ID</label>                  
+                <input id="radio2" type="radio" name="options" /> <label for="radio2">Live URL</label>
+            </div>
+            
+
+          <form id="myform-sub" class="needs-validation forms" novalidate action="javascript:fetchData();" >
+                <!-- <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-secondary active">
+                      <input type="radio" name="options" id="subId" autocomplete="off" checked> SubID
+                    </label>
+                    <label class="btn btn-secondary">
+                      <input type="radio" name="options" id="liveSite" autocomplete="off"> Live Site
+                    </label>                   
+                </div> -->
+
+                
                 <div class="input-group">          
                   <input type="text" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"  class="form-control" placeholder="Enter The SubID" id="input" aria-describedby="inputGroupPrepend" maxlength="7" required>
                   <div class="invalid-feedback">  Please enter a valid SubID.  </div>
@@ -44,6 +63,15 @@
                 </div>
             <button  class="btn btn-primary submit" type="submit" >Submit</button>
           </form>
+
+          <form id="myform-firm" class="needs-validation forms" novalidate action="javascript:fetchLiveSite();" style="display: none;">                         
+              <div class="input-group">          
+                <input type="text" class="form-control" placeholder="Enter The Live Site URL" id="inputUrl" aria-describedby="inputGroupPrepend" required>
+                <div class="invalid-feedback">  Please enter a live site URL.  </div>
+               </div>
+          <button  class="btn btn-primary submit" type="submit" >Submit</button>
+        </form>
+
       </div>
 
       <div class="search-results">
