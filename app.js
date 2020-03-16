@@ -109,7 +109,7 @@
             // $('#input').removeAttr('disabled');
 
         function fetchLiveSite(){
-            const inputLink = cros+ document.getElementById("inputUrl").value +'/wp-json/'; 
+            const inputLink = document.getElementById("inputUrl").value +'/wp-json/'; 
 
             fetch(inputLink) 
             .then(checkStatus)                 
