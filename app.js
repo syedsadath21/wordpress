@@ -22,7 +22,8 @@
               url +'.findlaw2.flsitebuilder.com/wp-json/',
               url +'.findlaw3.flsitebuilder.com/wp-json/',
               url +'.findlaw4.flsitebuilder.com/wp-json/',
-              url +'.findlaw5.flsitebuilder.com/wp-json/'
+              url +'.findlaw5.flsitebuilder.com/wp-json/',
+              url +'.findlaw6.flsitebuilder.com/wp-json/'
           ];
 
           Promise.all(urls.map(url =>
@@ -42,7 +43,7 @@
             } 
             var erMsg = document.getElementsByClassName('alert-danger') 
             if(erMsg.length > 1){          
-                $('<h4 class="alert alert-danger">&#10071; '+ erMsg[4].innerText + '</h4>').appendTo('#error-msg');
+                $('<h4 class="alert alert-danger">&#10071; '+ erMsg[5].innerText + '</h4>').appendTo('#error-msg');
                 $('#loading-point').empty();
             }
           }
@@ -110,12 +111,13 @@
 
         function fetchLiveSite(){
             const inputLink = document.getElementById("inputUrl").value +'/wp-json/'; 
+            $('#loading-point').html('<img class="loading" src="./images/blue.gif" />');
 
             fetch(inputLink) 
             .then(checkStatus)                 
             .then(parseJSON)
             .then(getUrls)
-            .catch(error => $('<h4 class="alert alert-danger">'+ "&#10071; Please check the URL and try again." + '</h4>').appendTo('#error-msg'))
+            .catch(error => $('<h4 class="alert alert-danger">'+ "&#10071; Please check the URL and try again." + '</h4>').appendTo('#error-msg'));
         }
 
 
