@@ -79,7 +79,7 @@
                 $('<h4 class="subid"><span>Sub ID </span>: '+ subId + '</h4>').appendTo('#data');
                 //dashboard link
                 $('<a target="_blank" class="link-btn dashLink">Dashboard</a>').appendTo('#data');
-                $('.dashLink').attr('href',builderLink+'/wp-admin/');
+                $('.dashLink').attr('href',builderLink+'/safe/');
                 //coportal link
                 $('<a target="_blank" class="link-btn coPortalLink">CoPortal</a>').appendTo('#data');
                 $('.coPortalLink').attr('href','http://coportal.int.thomsonreuters.com/index.jsp?page=sub_details&subscription_id='+ subId);
