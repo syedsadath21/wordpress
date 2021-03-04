@@ -1,6 +1,6 @@
    var allLinks;
    var altText;   
-   const cros = "https://cors-anywhere.herokuapp.com/";
+//    const cros = "https://cors-anywhere.herokuapp.com/";
 
 //    if(document.getElementById("input").value.length === 7){
 //     $('.submit').attr('disabled','true');
