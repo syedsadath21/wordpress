@@ -124,7 +124,7 @@ body{
   box-shadow: none !important;
   background: #fe620a;
 }
-.btn-primary:hover{
+.btn-primary:hover,.btn-primary.disabled, .btn-primary:disabled{
   background: #333 !important;
   border-color: #333 !important;
 }
