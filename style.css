@@ -23,7 +23,7 @@ body{
 }
 a.builderLink{
   overflow-wrap: break-word;
-  color: #fe620a;
+  color: #d34c00;
   text-decoration: underline !important;
 }
 a.builderLink:hover{
@@ -115,7 +115,7 @@ a.builderLink:hover{
 }
 .card-title{
   color: #fa6400;
-  font-size: 28px;
+  font-size: 30px;
 }
 
 .card-title img{
@@ -152,7 +152,7 @@ a.builderLink:hover{
     /*box-shadow: 0 0px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.12), 0 0px 5px 0 rgba(0,0,0,.2);*/
 }
 .search-results{
-    background: #eee;
+    background: #999;
     padding: 50px;
     border-radius: 5px;
     margin: 40px 0 40px;
