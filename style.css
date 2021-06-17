@@ -124,8 +124,9 @@ body{
   box-shadow: none !important;
   background: #fe620a;
 }
-.submit: hover{
+.btn-primary:hover{
   background: #333 !important;
+  border-color: #333 !important;
 }
 .col-left{
   background: #fff;
