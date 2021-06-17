@@ -11,7 +11,7 @@
       $('#data').empty();
       $('.submit').attr('disabled','true');
       $('#input').attr('disabled','true');      
-      $('#loading-point').html('<img class="loading" src="./images/blue.gif" />');
+      $('#loading-point').html('<img class="loading" src="./images/shipping-load.gif" />');
 
       
 
@@ -111,7 +111,7 @@
 
         function fetchLiveSite(){
             const inputLink = document.getElementById("inputUrl").value +'/wp-json/'; 
-            $('#loading-point').html('<img class="loading" src="./images/blue.gif" />');
+            $('#loading-point').html('<img class="loading" src="./images/shipping-load.gif" />');
 
             fetch(inputLink) 
             .then(checkStatus)                 
