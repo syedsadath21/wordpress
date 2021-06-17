@@ -21,12 +21,12 @@ body{
 .container{
   padding: 35px 10px 20px;
 }
-.builderLink{
+a.builderLink{
   overflow-wrap: break-word;
   color: #fe620a;
   text-decoration: underline !important;
 }
-.builderLink: hover{
+a.builderLink: hover{
   text-decoration: none !important;
   color: #000;
 }
