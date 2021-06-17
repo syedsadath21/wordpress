@@ -23,10 +23,16 @@ body{
 }
 .builderLink{
   overflow-wrap: break-word;
+  color: #fe620a;
+  text-decoration: underline !important;
+}
+.builderLink: hover{
+  text-decoration: none !important;
+  color: #000;
 }
 .firmName{
   margin: 0 0 30px;
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 .box{
     background: #fff;
@@ -49,7 +55,7 @@ body{
 }
 
 .link-btn:hover{
-  background: #ffa100;
+  background: #fe620a;
 }
 #data h4{
   font-size: 18px;
