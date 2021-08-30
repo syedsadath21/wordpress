@@ -75,8 +75,14 @@
                 
                 $('<h1 class="firmName">' + firmName + '</h1>').appendTo('#data');                
                 $('<h4><span>Builder URL </span>: <a target="_blank" class="builderLink">'+ builderLink + '</a></h4>').appendTo('#data');
+              
                 $('.builderLink').attr('href',builderLink);
                 $('<h4 class="subid"><span>Sub ID </span>: '+ subId + '</h4>').appendTo('#data');
+                //Dummy labels
+                $('<h4><span>Live Domain </span>: </h4>').appendTo('#data');
+                $('<h4><span>WLD ID </span>: </h4>').appendTo('#data');
+                $('<h4><span>Folder </span>: </h4>').appendTo('#data');
+
                 //dashboard link
                 $('<a target="_blank" class="link-btn dashLink">Dashboard</a>').appendTo('#data');
                 $('.dashLink').attr('href',builderLink+'/safe/');
