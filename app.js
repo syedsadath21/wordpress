@@ -84,7 +84,7 @@
                 $('<h4><span>Folder </span>: </h4>').appendTo('#data');
 
                 //dashboard link
-                $('<a target="_blank" class="link-btn dashLink">Dashboard</a>').appendTo('#data');
+                $('<a target="_blank" class="link-btn dashLink">WP Dashboard</a>').appendTo('#data');
                 $('.dashLink').attr('href',builderLink+'/safe/');
                 //coportal link
                 $('<a target="_blank" class="link-btn coPortalLink">CoPortal</a>').appendTo('#data');
